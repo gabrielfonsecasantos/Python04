@@ -2,16 +2,16 @@ import sys
 import typing
 
 
-def main():
+def main() -> None:
     if len(sys.argv) != 2:
         print("Usage: ft_ancient_text.py <file>")
         return
     print("=== Cyber Archives Recovery ===\n")
 
-    file = sys.argv[1]
+    file: str = sys.argv[1]
     print(f"Accessing file '{file}'")
     try:
-        text = open(file)
+        text: typing.TextIO = open(file)
         print("---\n")
         print(text.read())
         print("\n")
