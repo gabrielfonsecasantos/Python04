@@ -1,10 +1,25 @@
 import sys
 import typing
 
-if __name__ == "__main__":
-  print("=== Cyber Archives Recovery ===\n")
-  file = sys.argv[0]
-  print(f"file name: {file}")
-  text: typing.IO = open(file)
-  print(text.read())
 
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: ft_ancient_text.py <file>")
+        return
+    print("=== Cyber Archives Recovery ===\n")
+
+    file = sys.argv[1]
+    print(f"Accessing file '{file}'")
+    try:
+        text = open(file)
+        print("---\n")
+        print(text.read())
+        print("\n")
+        print("---")
+        text.close()
+    except OSError as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()
