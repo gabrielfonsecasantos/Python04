@@ -20,18 +20,22 @@ def main() -> None:
     except OSError as e:
         print(f"Error: {e}")
         return
+
     print("Transform data:\n---\n")
     transformed_content: str = ""
     for char in content:
-      if char == '\n':
-          transformed_content += "#\n"
-      else:
-          transformed_content += char
+        if char == '\n':
+            transformed_content += "#\n"
+        else:
+            transformed_content += char
+
     if transformed_content != "" and content[-1] != '\n':
         transformed_content += "#\n"
+
     print(transformed_content)
     print("---")
-    try: 
+
+    try:
         new_file_name: str = input("Enter new file name (or empty): ")
         if new_file_name == "":
             print("Not saving data.")
@@ -45,7 +49,6 @@ def main() -> None:
         print(f"Error on new file: {e}")
         print("Data not saved.")
         return
-
 
 
 if __name__ == "__main__":
