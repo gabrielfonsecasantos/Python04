@@ -16,10 +16,13 @@ def main() -> None:
         content: str = text.read()
         print(content)
         print("\n---")
-        text.close()
     except OSError as e:
         print(f"Error: {e}")
         return
+    except UnicodeDecodeError:
+        print(f"Error: File {file} contains invalid text.")
+    finally:
+        print(f"Closing '{file}'.")
 
     print("Transform data:\n---\n")
     transformed_content: str = ""

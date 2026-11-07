@@ -16,10 +16,14 @@ def main() -> None:
         print(text.read())
         print("\n")
         print("---\n")
-        text.close()
         print(f"File '{file}' closed.")
     except OSError as e:
         print(f"Error: {e}")
+    except UnicodeDecodeError:
+        print(f"Error: File {file} contains invalid text.")
+    finally:
+        text.close()
+        print(f"Closing {file}.")
 
 
 if __name__ == "__main__":
