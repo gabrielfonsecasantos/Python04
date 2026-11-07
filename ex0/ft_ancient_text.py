@@ -15,8 +15,9 @@ def main() -> None:
         print("---\n")
         print(text.read())
         print("\n")
-        print("---")
+        print("---\n")
         text.close()
+        print(f"File '{file}' closed.")
     except OSError as e:
         print(f"Error: {e}")
 
