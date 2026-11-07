@@ -52,6 +52,9 @@ def main() -> None:
         print(f"Error on new file: {e}")
         print("Data not saved.")
         return
+    finally:
+        print(f"Closing {new_file_name}.")
+        new_file_name.close()
 
 
 if __name__ == "__main__":

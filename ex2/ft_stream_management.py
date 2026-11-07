@@ -16,10 +16,13 @@ def main() -> None:
         content: str = text.read()
         print(content)
         print("\n---")
-        text.close()
     except OSError as e:
         print(f"[STDERR] Error opening file '{file}': {e}", file=sys.stderr)
         return
+    finally:
+        if text is not None:
+            print(f"Closing '{file}'.")
+            text.close()
 
     print("Transform data:\n---\n")
     transformed_content: str = ""
@@ -48,12 +51,15 @@ def main() -> None:
             new_file: typing.TextIO = open(new_file_name, "w")
             print(f"Saving data to '{new_file_name}'")
             new_file.write(transformed_content)
-            new_file.close()
             print(f"Data saved in file '{new_file_name}'.\n")
     except OSError as e:
         print(f"Error on new file: {e}", file=sys.stderr)
         print("Data not saved.")
         return
+    finally:
+        if new_file_name is not None:
+            print(f"Closing '{new_file_name}.'")
+            new_file.close()
 
 
 if __name__ == "__main__":
